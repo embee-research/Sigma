@@ -1,0 +1,29 @@
+title: Suspicious msdt.exe execution - Office Exploit
+id: 97a80ed7-1f3f-4d05-9ef4-65760e634f6b
+status: experimental
+description: This rule will monitor suspicious arguments passed to the msdt.exe process. These arguments are an indicator of recent Office/Msdt exploitation. 
+references:
+    - https://doublepulsar.com/follina-a-microsoft-office-code-execution-vulnerability-1a47fce5629e
+    - https://twitter.com/MalwareJake/status/1531019243411623939
+author: 'Matthew Brennan'
+tags:
+    - attack.execution
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection1:
+      Image|endswith:
+        - 'msdt.exe'
+    selection2:
+      CommandLine|contains:
+        - PCWDiagnostic
+    selection3:
+      CommandLine|contains:
+        - 'ms-msdt:-id'
+        - 'ms-msdt:/id'
+    selection4:
+      CommandLine|contains:
+        - 'invoke'
+    condition: selection1 and (selection4 OR (selection2 and selection3))
+falsepositives:

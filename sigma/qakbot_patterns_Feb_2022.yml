@@ -23,6 +23,9 @@ detection:
     selection2:
       Image|endswith:
         - 'wscript.exe'
+      CommandLine|contains:
+        - 'Onenote'
+        - 'Exported'
       ParentImage|endswith:
         - 'onenote.exe'
         

@@ -18,6 +18,7 @@ detection:
        - 'cmd.exe'
       ParentCommandLine|contains:
        - 'Exported'
+       - 'Start-Sleep'
  
     selection2:
       Image|endswith:

@@ -4,7 +4,7 @@ status: stable
 description: Detection of Some Qakbot Execution Patterns
 references:
     - 'https://twitter.com/pr0xylife/status/1625890379756085248'
-author: 'Matthew Brennan'
+author: 'Matthew Brennan @ HuntressLabs'
 logsource:
     category: process_creation
     product: windows
@@ -28,8 +28,6 @@ detection:
         - 'Exported'
       ParentImage|endswith:
         - 'onenote.exe'
-        
-
 
     condition: selection1 or selection2
 falsepositives:

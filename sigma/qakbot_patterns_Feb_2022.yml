@@ -1,0 +1,33 @@
+title: Qakbot Patterns - Feb 2022
+id: 3d3e27e7-6637-48ef-afc2-aac64cb57c50
+status: stable
+description: Detection of Some Qakbot Execution Patterns
+references:
+    - 'https://twitter.com/pr0xylife/status/1625890379756085248'
+author: 'Matthew Brennan'
+logsource:
+    category: process_creation
+    product: windows
+detection:
+
+    selection1:
+      Image|endswith:
+        - 'rundll32.exe'
+      ParentImage|endswith:
+       - 'Powershell.exe'
+       - 'cmd.exe'
+      ParentCommandLine|contains:
+       - 'Exported'
+ 
+    selection2:
+      Image|endswith:
+        - 'wscript.exe'
+      ParentImage|endswith:
+        - 'onenote.exe'
+        
+
+
+    condition: selection1 or selection2
+falsepositives:
+  - Unknown
+level: high

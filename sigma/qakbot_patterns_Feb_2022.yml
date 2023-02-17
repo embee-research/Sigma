@@ -5,6 +5,9 @@ description: Detection of Some Qakbot Execution Patterns
 references:
     - 'https://twitter.com/pr0xylife/status/1625890379756085248'
 author: 'Matthew Brennan @ HuntressLabs'
+tags: 
+    - attack.t1059.001
+    - attack.t1202
 logsource:
     category: process_creation
     product: windows
